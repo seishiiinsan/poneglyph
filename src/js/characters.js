@@ -1,48 +1,51 @@
-const chaptersContainer = document.getElementById('chapters-container');
+const charactersContainer = document.getElementById('characters-container');
 const paginationContainer = document.getElementById('pagination-container');
 
-let allChapters = [];
+let allCharacters = [];
 let currentPage = 1;
-const chaptersPerPage = 12;
+const charactersPerPage = 12;
 
-async function fetchChapters() {
+async function fetchCharacters() {
     try {
-        const response = await fetch('https://api.api-onepiece.com/v2/chapters/fr');
-        allChapters = await response.json();
-        // Trier les chapitres par ID décroissant (les plus récents en premier)
-        allChapters.sort((a, b) => b.id - a.id);
+        const response = await fetch('https://api.api-onepiece.com/v2/characters/fr');
+        allCharacters = await response.json();
         displayPage(currentPage);
         setupPagination();
     } catch (error) {
-        console.error("Erreur lors de la récupération des chapitres :", error);
-        chaptersContainer.innerHTML = "<p>Erreur lors du chargement des chapitres.</p>";
+        console.error("Erreur lors de la récupération :", error);
+        charactersContainer.innerHTML = "<p>Erreur lors du chargement des données.</p>";
     }
 }
 
 function displayPage(page) {
-    chaptersContainer.innerHTML = '';
+    charactersContainer.innerHTML = '';
     currentPage = page;
-    const startIndex = (page - 1) * chaptersPerPage;
-    const endIndex = startIndex + chaptersPerPage;
-    const paginatedChapters = allChapters.slice(startIndex, endIndex);
+    const startIndex = (page - 1) * charactersPerPage;
+    const endIndex = startIndex + charactersPerPage;
+    const paginatedCharacters = allCharacters.slice(startIndex, endIndex);
 
-    paginatedChapters.forEach(chapter => {
-        const chapterCard = document.createElement('div');
-        chapterCard.className = 'character-card'; // Réutilisation du style des cartes
+    paginatedCharacters.forEach(char => {
+        const charCard = document.createElement('div');
+        charCard.className = 'character-card';
 
-        chapterCard.innerHTML = `
+        let crewHtml = '';
+        if (char.crew) {
+            crewHtml = `<p><strong>Équipage :</strong> ${char.crew.name}</p>`;
+        }
+
+        charCard.innerHTML = `
             <div class="card-header">
-                <h3>Chapitre ${chapter.id}</h3>
-                <span class="character-job">${chapter.title}</span>
+                <h3>${char.name}</h3>
+                <span class="character-job">${char.job || 'Inconnu'}</span>
             </div>
             <div class="card-section">
-                <p><strong>Tome :</strong> ${chapter.tome ? chapter.tome.tome_number : 'Inconnu'}</p>
-                <p><strong>Arc :</strong> ${chapter.arc ? chapter.arc.title : 'Inconnu'}</p>
-                <p class="chapter-desc">${chapter.description || 'Pas de description disponible.'}</p>
-                <p style="text-align: right; font-size: 0.9rem; color: #6d4c41;">Publié le : ${chapter.release_date || 'Date inconnue'}</p>
+                <p><strong>Prime :</strong> ${char.bounty ? new Intl.NumberFormat().format(char.bounty.replace(/\./g, '')) + ' Berrys' : 'Inconnue'}</p>
+                <p><strong>Statut :</strong> ${char.status || 'Inconnu'}</p>
+                <p><strong>Âge :</strong> ${char.age || 'Inconnu'}</p>
+                ${crewHtml}
             </div>
         `;
-        chaptersContainer.appendChild(chapterCard);
+        charactersContainer.appendChild(charCard);
     });
     setupPagination();
     window.scrollTo(0, 0);
@@ -50,7 +53,7 @@ function displayPage(page) {
 
 function setupPagination() {
     paginationContainer.innerHTML = '';
-    const pageCount = Math.ceil(allChapters.length / chaptersPerPage);
+    const pageCount = Math.ceil(allCharacters.length / charactersPerPage);
     const maxVisibleButtons = 5;
 
     // Previous Button
@@ -114,4 +117,4 @@ function setupPagination() {
     paginationContainer.appendChild(nextButton);
 }
 
-fetchChapters();
+fetchCharacters();

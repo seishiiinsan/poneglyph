@@ -3,10 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les chapitres</title>
-    <script src="/src/chap.js"></script>
+    <title>Chapitres - One Piece Wiki</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica:ital@0;1&family=Pirata+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
-    <div id="chapters"></div>
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="characters.html">Personnages</a></li>
+            <li><a href="chapitres.html">Chapitres</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1>Les Chapitres de One Piece</h1>
+    <div id="chapters-container">
+        <p>Chargement des chapitres...</p>
+    </div>
+    <div id="pagination-container"></div>
+</main>
+
+<footer>
+    <p>&copy; 2026 One Piece Wiki</p>
+</footer>
+
+<script src="src/chap.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Poneglyph - Accueil</title>
+    <title>Personnages - One Piece Wiki</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica:ital@0;1&family=Pirata+One&display=swap" rel="stylesheet">
@@ -20,20 +20,17 @@
 </header>
 
 <main>
-    <h1>Bienvenue sur Poneglyph 📜</h1>
-    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-        <p style="font-size: 1.5rem;">L'encyclopédie ultime pour tout savoir sur l'univers de One Piece.</p>
-        <p>Explorez les fiches des personnages, découvrez leurs histoires et leurs pouvoirs, ou plongez dans les chapitres du manga.</p>
-
-        <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <a href="characters.html" class="cta-button">Voir les Personnages</a>
-            <a href="chapitres.html" class="cta-button">Lire les Chapitres</a>
-        </div>
+    <h1>Les Personnages de One Piece</h1>
+    <div id="characters-container">
+        <p>Chargement des personnages...</p>
     </div>
+    <div id="pagination-container"></div>
 </main>
 
 <footer>
     <p>&copy; 2026 One Piece Wiki</p>
 </footer>
+
+<script src="src/js/characters.js"></script>
 </body>
 </html>
