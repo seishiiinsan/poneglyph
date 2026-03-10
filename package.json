@@ -1,0 +1,25 @@
+{
+  "name": "poneglyph",
+  "version": "1.0.0",
+  "description": "One Piece Wiki",
+  "homepage": "https://github.com/seishiiinsan/poneglyph#readme",
+  "bugs": {
+    "url": "https://github.com/seishiiinsan/poneglyph/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seishiiinsan/poneglyph.git"
+  },
+  "license": "ISC",
+  "author": "seishin",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
