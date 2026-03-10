@@ -168,6 +168,31 @@ h1 {
     color: #999;
 }
 
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    background-color: #8b0000;
+    color: #fff8e7;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-family: 'Pirata One', cursive;
+    font-size: 1.5rem;
+    border: 2px solid #5d4037;
+    box-shadow: 3px 3px 0 #3e2723;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cta-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 #3e2723;
+    color: #ffd700;
+}
+
+.cta-button:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 #3e2723;
+}
+
 footer {
     background-color: #3e2723;
     color: #d7ccc8;
